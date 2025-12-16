@@ -74,6 +74,112 @@
             </div>
         </div>
 
+        @if(Auth::user()->role === 'manager')
+            <!-- Manager Analytics Section -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800">Analisis Performa</h3>
+
+                    <!-- Filters -->
+                    <form method="GET" action="{{ route('dashboard') }}" class="flex flex-wrap gap-2 text-sm">
+                        <input type="text" name="sales_name" placeholder="Filter Sales..." value="{{ request('sales_name') }}"
+                            class="px-3 py-1.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                        <input type="text" name="surveyor_name" placeholder="Filter Surveyor..."
+                            value="{{ request('surveyor_name') }}"
+                            class="px-3 py-1.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                        <button type="submit"
+                            class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1.5 rounded-lg transition-colors">
+                            Filter
+                        </button>
+                        @if(request()->hasAny(['sales_name', 'surveyor_name']))
+                            <a href="{{ route('dashboard') }}" class="text-red-500 hover:text-red-700 px-3 py-1.5">Reset</a>
+                        @endif
+                    </form>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Sales Performance Chart -->
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-500 mb-4 text-center">Top Performing Sales</h4>
+                        <div class="relative h-64">
+                            <canvas id="salesChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Installation Performance Chart -->
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-500 mb-4 text-center">Instalasi per Surveyor</h4>
+                        <div class="relative h-64">
+                            <canvas id="surveyorChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    // Sales Data
+                    const salesData = @json($salesPerformance);
+                    const salesLabels = salesData.map(item => item.name);
+                    const salesCounts = salesData.map(item => item.count);
+
+                    new Chart(document.getElementById('salesChart'), {
+                        type: 'bar',
+                        data: {
+                            labels: salesLabels,
+                            datasets: [{
+                                label: 'Jumlah Project',
+                                data: salesCounts,
+                                backgroundColor: 'rgba(59, 130, 246, 0.6)',
+                                borderColor: 'rgb(59, 130, 246)',
+                                borderWidth: 1,
+                                borderRadius: 4
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: { beginAtZero: true, ticks: { stepSize: 1 } }
+                            },
+                            plugins: { legend: { display: false } }
+                        }
+                    });
+
+                    // Surveyor Data
+                    const surveyorData = @json($surveyorPerformance);
+                    const surveyorLabels = surveyorData.map(item => item.name);
+                    const surveyorCounts = surveyorData.map(item => item.count);
+
+                    new Chart(document.getElementById('surveyorChart'), {
+                        type: 'bar',
+                        data: {
+                            labels: surveyorLabels,
+                            datasets: [{
+                                label: 'Project Diinstal',
+                                data: surveyorCounts,
+                                backgroundColor: 'rgba(249, 115, 22, 0.6)',
+                                borderColor: 'rgb(249, 115, 22)',
+                                borderWidth: 1,
+                                borderRadius: 4
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: { beginAtZero: true, ticks: { stepSize: 1 } }
+                            },
+                            plugins: { legend: { display: false } }
+                        }
+                    });
+                });
+            </script>
+        @endif
+
         <!-- Recent Leads -->
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
             <h3 class="text-lg font-semibold mb-4">Leads Terbaru</h3>

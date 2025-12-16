@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" version="29.2.7" pages="2">
+  <diagram id="activity-diagram-sales" name="Activity Diagram (Roles)">
+    <mxGraphModel dx="1426" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pool_1" parent="1" style="swimlane;html=1;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;horizontal=1;startSize=20;horizontalStack=0;fillColor=#ffffff;" value="Lead to Customer Activation Workflow" vertex="1">
+          <mxGeometry height="600" width="1080" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_sales" parent="pool_1" style="swimlane;html=1;startSize=20;horizontal=0;fillColor=#d5e8d4;strokeColor=#82b366;" value="Sales Officer" vertex="1">
+          <mxGeometry height="180" width="1080" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="start_node" parent="lane_sales" style="ellipse;html=1;shape=startState;fillColor=#000000;strokeColor=#ff0000;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="40" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="act_login_sales" parent="lane_sales" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;" value="Sales Login" vertex="1">
+          <mxGeometry height="40" width="100" x="110" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="act_create_lead" parent="lane_sales" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;" value="Create New Lead" vertex="1">
+          <mxGeometry height="40" width="120" x="250" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="act_process_lead" parent="lane_sales" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;" value="Select Lead to Process" vertex="1">
+          <mxGeometry height="40" width="140" x="410" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="act_input_details" parent="lane_sales" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;" value="Input Product &amp; Surveyor" vertex="1">
+          <mxGeometry height="40" width="160" x="590" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="act_submit_project" parent="lane_sales" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;fontStyle=1" value="Submit (Create Project)" vertex="1">
+          <mxGeometry height="40" width="150" x="800" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="lane_sales" source="start_node" target="act_login_sales">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="lane_sales" source="act_login_sales" target="act_create_lead">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="lane_sales" source="act_create_lead" target="act_process_lead">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="lane_sales" source="act_process_lead" target="act_input_details">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="lane_sales" source="act_input_details" target="act_submit_project">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_manager" parent="pool_1" style="swimlane;html=1;startSize=20;horizontal=0;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Manager / Surveyor" vertex="1">
+          <mxGeometry height="220" width="1080" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="act_login_mgr" parent="lane_manager" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;" value="Manager Login" vertex="1">
+          <mxGeometry height="40" width="100" x="40" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="act_view_pending" parent="lane_manager" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;" value="View Pending Projects" vertex="1">
+          <mxGeometry height="40" width="140" x="180" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="act_approve" parent="lane_manager" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;fontStyle=1" value="Approve Project" vertex="1">
+          <mxGeometry height="40" width="120" x="360" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="act_install" parent="lane_manager" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;dashed=1;" value="Physical Installation&#xa;(Surveyor)" vertex="1">
+          <mxGeometry height="50" width="140" x="540" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="act_finish" parent="lane_manager" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;fontStyle=1" value="Mark as Finished" vertex="1">
+          <mxGeometry height="40" width="120" x="740" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="lane_manager" source="act_login_mgr" target="act_view_pending">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="lane_manager" source="act_view_pending" target="act_approve">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="lane_manager" source="act_install" target="act_finish">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_system" parent="pool_1" style="swimlane;html=1;startSize=20;horizontal=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="System / Database" vertex="1">
+          <mxGeometry height="180" width="1080" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="state_pending" parent="lane_system" style="hexagon;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" value="Status:&#xa;Pending Approval" vertex="1">
+          <mxGeometry height="60" width="120" x="70" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="state_install" parent="lane_system" style="hexagon;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" value="Status:&#xa;Installation" vertex="1">
+          <mxGeometry height="60" width="120" x="360" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="state_completed" parent="lane_system" style="hexagon;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" value="Status:&#xa;Completed" vertex="1">
+          <mxGeometry height="60" width="120" x="640" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="act_create_cust" parent="lane_system" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;fontStyle=1" value="System Creates Customer" vertex="1">
+          <mxGeometry height="40" width="160" x="780" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="state_active" parent="lane_system" style="hexagon;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Status: Active" vertex="1">
+          <mxGeometry height="60" width="90" x="980" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="end_node" parent="lane_system" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#ff0000;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="1010" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="lane_system" source="state_completed" target="act_create_cust">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="lane_system" source="act_create_cust" target="state_active">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="lane_system" source="state_active" target="end_node">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="pool_1" source="act_submit_project" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="state_pending">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="950" y="180" />
+              <mxPoint x="30" y="180" />
+              <mxPoint x="30" y="500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="pool_1" source="state_pending" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="act_login_mgr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="pool_1" source="act_approve" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="state_install">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="pool_1" source="state_install" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="act_install">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="pool_1" source="act_finish" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="state_completed">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="800" y="310" />
+              <mxPoint x="730" y="310" />
+              <mxPoint x="730" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="QKJXE-xZgoy0Bsrvz6Mn" name="Halaman-2">
+    <mxGraphModel dx="1426" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sales" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;participant=umlActor;" value="Sales" vertex="1">
+          <mxGeometry height="960" width="20" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="manager" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;participant=umlActor;" value="Manager" vertex="1">
+          <mxGeometry height="960" width="20" x="160" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="web" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Web Interface" vertex="1">
+          <mxGeometry height="960" width="100" x="300" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ctrl" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Controllers (Laravel)" vertex="1">
+          <mxGeometry height="960" width="120" x="500" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="db" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#d5e8d4;strokeColor=#82b366;" value="Database" vertex="1">
+          <mxGeometry height="960" width="100" x="720" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="msg1" edge="1" parent="1" source="sales" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="web" value="1. Input New Lead">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="200" y="100" />
+            </Array>
+            <mxPoint x="60" y="100" as="sourcePoint" />
+            <mxPoint x="140" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg2" edge="1" parent="1" source="web" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="ctrl" value="2. POST /leads (store)">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="130" />
+            </Array>
+            <mxPoint x="350" y="130" as="sourcePoint" />
+            <mxPoint x="550" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg3" edge="1" parent="1" source="ctrl" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="db" value="3. INSERT into leads">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="160" />
+            </Array>
+            <mxPoint x="560" y="160" as="sourcePoint" />
+            <mxPoint x="760" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg4" edge="1" parent="1" source="db" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" target="ctrl" value="4. Success">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="190" />
+            </Array>
+            <mxPoint x="760" y="190" as="sourcePoint" />
+            <mxPoint x="560" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg5" edge="1" parent="1" source="ctrl" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" target="web" value="5. Show &quot;Lead Created&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="220" />
+            </Array>
+            <mxPoint x="560" y="220" as="sourcePoint" />
+            <mxPoint x="350" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg6" edge="1" parent="1" source="sales" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="web" value="6. Click &quot;Process&quot; on Lead">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="200" y="260" />
+            </Array>
+            <mxPoint x="50" y="260" as="sourcePoint" />
+            <mxPoint x="350" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg7" edge="1" parent="1" source="web" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="ctrl" value="7. GET /projects/create (with lead_id)">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="290" />
+            </Array>
+            <mxPoint x="350" y="290" as="sourcePoint" />
+            <mxPoint x="560" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg8" edge="1" parent="1" source="ctrl" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" target="web" value="8. Show Project Form">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="320" />
+            </Array>
+            <mxPoint x="560" y="320" as="sourcePoint" />
+            <mxPoint x="350" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg9" edge="1" parent="1" source="sales" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="web" value="9. Select Product, Input Data">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="200" y="350" />
+            </Array>
+            <mxPoint x="50" y="350" as="sourcePoint" />
+            <mxPoint x="350" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg10" edge="1" parent="1" source="web" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="ctrl" value="10. POST /projects (store)">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="380" />
+            </Array>
+            <mxPoint x="350" y="380" as="sourcePoint" />
+            <mxPoint x="560" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg11" edge="1" parent="1" source="ctrl" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="db" value="11. INSERT into projects">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="410" />
+            </Array>
+            <mxPoint x="560" y="410" as="sourcePoint" />
+            <mxPoint x="770" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg12" edge="1" parent="1" source="ctrl" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="db" value="12. UPDATE leads (converted)">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="440" />
+            </Array>
+            <mxPoint x="560" y="440" as="sourcePoint" />
+            <mxPoint x="770" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg13" edge="1" parent="1" source="db" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" target="ctrl" value="13. Success">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="470" />
+            </Array>
+            <mxPoint x="770" y="470" as="sourcePoint" />
+            <mxPoint x="560" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg14" edge="1" parent="1" source="ctrl" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" target="web" value="14. Redirect to Project Index">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="500" />
+            </Array>
+            <mxPoint x="560" y="500" as="sourcePoint" />
+            <mxPoint x="350" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg15" edge="1" parent="1" source="manager" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="web" value="15. Login &amp; View Projects">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="540" />
+            </Array>
+            <mxPoint x="170" y="540" as="sourcePoint" />
+            <mxPoint x="350" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg16" edge="1" parent="1" source="web" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="ctrl" value="16. GET /projects">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="570" />
+            </Array>
+            <mxPoint x="350" y="570" as="sourcePoint" />
+            <mxPoint x="560" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg17" edge="1" parent="1" source="ctrl" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="db" value="17. SELECT * FROM projects">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="600" />
+            </Array>
+            <mxPoint x="560" y="600" as="sourcePoint" />
+            <mxPoint x="770" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg18" edge="1" parent="1" source="db" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" target="ctrl" value="18. Data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="630" />
+            </Array>
+            <mxPoint x="770" y="630" as="sourcePoint" />
+            <mxPoint x="560" y="630" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg19" edge="1" parent="1" source="ctrl" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" target="web" value="19. List Projects">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="660" />
+            </Array>
+            <mxPoint x="560" y="660" as="sourcePoint" />
+            <mxPoint x="350" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg20" edge="1" parent="1" source="manager" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="web" value="20. Click &quot;Approve&quot;">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="690" />
+            </Array>
+            <mxPoint x="170" y="690" as="sourcePoint" />
+            <mxPoint x="350" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg21" edge="1" parent="1" source="web" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="ctrl" value="21. POST /projects/{id}/approve">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="720" />
+            </Array>
+            <mxPoint x="350" y="720" as="sourcePoint" />
+            <mxPoint x="560" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg22" edge="1" parent="1" source="ctrl" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="db" value="22. UPDATE projects (Installation)">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="750" />
+            </Array>
+            <mxPoint x="560" y="750" as="sourcePoint" />
+            <mxPoint x="770" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg23" edge="1" parent="1" source="db" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" target="ctrl" value="23. Success">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="780" />
+            </Array>
+            <mxPoint x="770" y="780" as="sourcePoint" />
+            <mxPoint x="560" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg24" edge="1" parent="1" source="ctrl" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" target="web" value="24. Show &quot;Approved&quot;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="810" />
+            </Array>
+            <mxPoint x="560" y="810" as="sourcePoint" />
+            <mxPoint x="350" y="810" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg25" edge="1" parent="1" source="manager" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="web" value="25. Click &quot;Finish Installation&quot;">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="840" />
+            </Array>
+            <mxPoint x="170" y="840" as="sourcePoint" />
+            <mxPoint x="350" y="840" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg26" edge="1" parent="1" source="web" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="ctrl" value="26. POST /projects/{id}/finish">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="870" />
+            </Array>
+            <mxPoint x="350" y="870" as="sourcePoint" />
+            <mxPoint x="560" y="870" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg27" edge="1" parent="1" source="ctrl" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="db" value="27. UPDATE projects (Completed)">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="900" />
+            </Array>
+            <mxPoint x="560" y="900" as="sourcePoint" />
+            <mxPoint x="770" y="900" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg28" edge="1" parent="1" source="ctrl" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" target="db" value="28. INSERT into customers">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="930" />
+            </Array>
+            <mxPoint x="560" y="930" as="sourcePoint" />
+            <mxPoint x="770" y="930" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg29" edge="1" parent="1" source="db" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" target="ctrl" value="29. Success">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="960" />
+            </Array>
+            <mxPoint x="770" y="960" as="sourcePoint" />
+            <mxPoint x="560" y="960" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="msg30" edge="1" parent="1" source="ctrl" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" target="web" value="30. Redirect to Customers Index">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="990" />
+            </Array>
+            <mxPoint x="560" y="990" as="sourcePoint" />
+            <mxPoint x="350" y="990" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NLIYyGpohYdXAvUEReOw-2" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Web Interface" vertex="1">
+          <mxGeometry height="40" width="100" x="300" y="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="NLIYyGpohYdXAvUEReOw-3" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Controllers (Laravel)" vertex="1">
+          <mxGeometry height="40" width="120" x="500" y="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="NLIYyGpohYdXAvUEReOw-4" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#d5e8d4;strokeColor=#82b366;" value="Database" vertex="1">
+          <mxGeometry height="40" width="100" x="720" y="990" as="geometry" />
+        </mxCell>
+        <mxCell id="NLIYyGpohYdXAvUEReOw-5" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;participant=umlActor;" value="Manager" vertex="1">
+          <mxGeometry height="40" width="20" x="160" y="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="NLIYyGpohYdXAvUEReOw-6" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;participant=umlActor;" value="Sales" vertex="1">
+          <mxGeometry height="40" width="20" x="40" y="1000" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
